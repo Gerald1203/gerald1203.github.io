@@ -1,0 +1,117 @@
+---
+layout: default
+description: Template for people page
+---
+{{ content }}
+
+{% assign sorted_names = "" | split: "" %}
+{% assign names_prefixed_with_last = "" | split: "" %}
+{% assign has_faculty = false %}
+{% assign has_postdoc = false %}
+{% assign has_phd = false %}
+{% assign has_master = false %}
+{% assign has_undergraduate = false %}
+
+{% for member in site.data.people %}
+  {% assign name_parts = member.name | split: " " %}
+  {% assign last_name = name_parts | last %}
+  {% assign name_prefixed_with_last = member.name | prepend: last_name %}
+  {% assign names_prefixed_with_last = names_prefixed_with_last | push: name_prefixed_with_last %}
+  {% if member.identity == 'faculty' %} {% assign has_faculty = true %} {% endif %}
+  {% if member.identity == 'postdoc' %} {% assign has_postdoc = true %} {% endif %}
+  {% if member.identity == 'phd' %} {% assign has_phd = true %} {% endif %}
+  {% if member.identity == 'master' %} {% assign has_master = true %} {% endif %}
+  {% if member.identity == 'undergraduate' %} {% assign has_undergraduate = true %} {% endif %}
+{% endfor %}
+
+{% assign sorted_with_prefix = names_prefixed_with_last | sort %}
+
+{% for name_with_prefix in sorted_with_prefix %}
+  {% assign name_parts = name_with_prefix | split: " " %}
+  {% assign last_name = name_parts | last %}
+  {% assign name = name_with_prefix | replace_first: last_name %}
+  {% assign sorted_names = sorted_names | push: name %}
+{% endfor %}
+
+{% if has_faculty == true %}
+  {% assign faculties = "" | split: "" %}
+{% endif %}
+{% if has_postdoc == true %}
+  {% assign postdocs = "" | split: "" %}
+{% endif %}
+{% if has_phd == true %}
+  {% assign phds = "" | split: "" %}
+{% endif %}
+{% if has_master == true %}
+  {% assign masters = "" | split: "" %}
+{% endif %}
+{% if has_undergraduate == true %}
+  {% assign undergraduates = "" | split: "" %}
+{% endif %}
+
+{% for name in sorted_names %}
+  {% for member in site.data.people %}
+    {% if member.name == name %}
+      {% if has_faculty == true and member.identity == 'faculty' %}
+        {% assign faculties = faculties | push: name %}
+      {% elsif has_postdoc == true and member.identity == 'postdoc' %}
+        {% assign postdocs = postdocs | push: name %}
+      {% elsif has_phd == true and member.identity == 'phd' %}
+        {% assign phds = phds | push: name %}
+      {% elsif has_master == true and member.identity == 'master' %}
+        {% assign masters = masters | push: name %}
+      {% elsif has_undergraduate and member.identity == 'undergraduate' %}
+        {% assign undergraduates = undergraduates | push: name %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% assign final_names = "" | split: "" %}
+{% if has_faculty == true %}
+  {% assign final_names = final_names | concat: faculties %}
+{% endif %}
+{% if has_postdoc == true %}
+  {% assign final_names = final_names | concat: postdocs %}
+{% endif %}
+{% if has_phd == true %}
+  {% assign final_names = final_names | concat: phds %}
+{% endif %}
+{% if has_master == true %}
+  {% assign final_names = final_names | concat: masters %}
+{% endif %}
+{% if has_undergraduate == true %}
+  {% assign final_names = final_names | concat: undergraduates %}
+{% endif %}
+
+<div class="group-container">
+{% for name in final_names %}
+    {% for member in site.data.people %}
+      {% if member.name == name %}
+        <div class="group-member">
+          <div class="flex-shrink-0">
+            {% if member.image %}
+              <img src="{{ member.image | relative_url }}">
+            {% endif %}
+          </div>
+          <div>
+            <h5 id="{{ member.name | strip | url_encode }}" style="margin-top: 0.5rem; margin-bottom: 0;">
+                {{ member.name }}
+            </h5>
+            {% if member.role %}
+              <small class="text-muted">{{ member.role }}</small>
+            {% endif %}
+
+            <ul class="list-inline">
+              {% if member.homepage %}
+                <li class="list-inline-item">
+                  <a href="{{ member.homepage }}"><i class="fas fa-home"></i></a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  </div>

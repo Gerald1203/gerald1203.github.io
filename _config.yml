@@ -1,0 +1,41 @@
+# SITE SETTINGS
+title: Fankun Zeng                      # Title in top navigation bar (navbar) and <head>
+description: Fankun Zeng                # Site description in <head>
+
+# THEME SETTINGS (ALL OPTIONAL)
+colors:
+  links: "#52adc8"                      # Color for links: use a readable color that contrasts well with dark text
+  banner: "#a9a9a9"                     # Background color for page banners: use color that contrasts well with white
+  footer: "#6c757d"                     # Background color for footer: use color that contrasts well with white
+font_serif: true                        # Font type for page content: serif (default) or slightly smaller sans-serif
+rounded_corners: true                   # Enable (default) rounded corners on boxes and buttons
+logo: /assets/images/icon.png # Logo in navbar, will be displayed with 30px height
+
+# BUILD SETTINGS
+markdown: kramdown
+plugins:                                # If you build your site on gh-pages, only use these plugins: https://pages.github.com/versions/
+  - jekyll-feed
+  - jekyll-sitemap
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - LICENSE
+  - package-lock.json
+  - package.json
+  - petridish.gemspec
+
+# FRONTMATTER DEFAULTS
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: "/news/:year/:slug/"   # Use /blog/yyyy/{filename}/ as permalink for all posts
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"                 # Only required for Petridish website, implied for sites using a theme

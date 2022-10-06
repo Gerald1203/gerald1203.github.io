@@ -1,0 +1,12 @@
+*.gem
+.bundle
+.sass-cache
+_site
+Gemfile.lock
+.idea
+
+# npm
+node_modules
+
+# Mac OS X
+.DS_Store

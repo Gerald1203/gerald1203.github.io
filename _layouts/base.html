@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+    {% include navbar.html %}
+
+    <main>
+      {% if page.pure_markdown != true %}
+        {% include header.html %}
+      {% endif %}
+
+      {% if page.pure_markdown %}
+        <div class="container content" style="margin-top: 3%">
+      {% else %}
+        <div class="container content">
+      {% endif %}
+        {% if page.no_bullet %}
+          {{ content | replace: '<table>', '<table class="table">' | replace: '</h2>', '</h2><br>' | replace: '<ul>', '<ul style="list-style-type: none">' | replace: '</li>', '</li><br><br>'}}
+        {% else %}
+          {{ content | replace: '<table>', '<table class="table">' | replace: '</h2>', '</h2><br>'}}
+        {% endif %}
+
+      </div>
+    </main>
+  </body>
+</html>

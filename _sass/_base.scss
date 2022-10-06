@@ -1,0 +1,25 @@
+// General styling
+//
+// For content styling, see _content.scss
+
+body {
+  word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
+  position: relative; // Required for scrollspy
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  line-height: 160%;
+  cursor: auto;
+}
+
+.btn {
+  white-space: normal; // Wrap button within container
+}
+
+// Add padding to code blocks
+pre.highlight {
+  padding: 0.25rem;
+  margin-bottom: $grid-gutter-width / 2;
+}
