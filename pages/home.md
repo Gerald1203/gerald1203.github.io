@@ -1,5 +1,5 @@
 ---
-layout: markdown
+layout: home
 permalink: /
 pure_markdown: True
 ---
