@@ -110,7 +110,7 @@ header {
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
-header ul {
+/* header ul {
   list-style:none;
   height:40px;
   padding:0;
@@ -167,7 +167,7 @@ header ul a strong {
   font-size:14px;
   display:block;
   color:#222;
-}
+} */
 
 section {
   width:500px;
