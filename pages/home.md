@@ -9,6 +9,4 @@ is_home: True
 
 Hello! My name is **Fankun Zeng**. I earned my Master of Computer Science degree from Washington University in St. Louis in May 2023.
 
-During my academic journey, I completed my master’s thesis titled "[Evaluating the Problem Solving Abilities of ChatGPT](https://openscholarship.wustl.edu/eng_etds/849/)".
-
-Now, I am a research/lab technician at [The WashU NLP Group](https://nlp.wustl.edu). And I am actively seeking exciting job opportunities and exploring potential avenues for pursuing a Ph.D.
+I am currently a Bioinformatics Research Analyst at [Ding Lab](https://dinglab.wustl.edu/) at Washington University in St. Louis. I am actively seeking exciting job opportunities and exploring potential avenues for pursuing a Ph.D.
